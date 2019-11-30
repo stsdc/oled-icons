@@ -3,8 +3,8 @@
 echo "┌───────────────────────────────────────┐"
 echo "│ Converting oled-icons from SVG to C++ │"
 echo "└───────────────────────────────────────┘"
-echo -n " * Creating xbm directory ........... "
-mkdir -p bitmaps
+echo -n " * Creating src directory ........... "
+mkdir -p src
 echo "ok"
 
 echo -n " * Changing directory to svg ........ "
@@ -12,11 +12,11 @@ cd svg
 echo "ok"
 
 echo -n " * Converting to bitmaps ............ "
-mogrify -path ../bitmaps -format xbm  *.svg
+mogrify -path ../src -format xbm  *.svg
 echo "ok"
 
 echo -n " * Changing directory to bitmaps .... "
-cd ../bitmaps
+cd ../src
 echo "ok"
 
 echo -n " * Changing file extensions ......... "

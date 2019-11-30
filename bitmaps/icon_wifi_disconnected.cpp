@@ -1,4 +1,4 @@
-#include <avr/pgmspace.h>
+#include "bitmaps.h"
 
 #define wifi_disconnected_width 15
 #define wifi_disconnected_height 15

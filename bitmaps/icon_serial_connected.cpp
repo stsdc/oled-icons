@@ -1,4 +1,4 @@
-#include <avr/pgmspace.h>
+#include "bitmaps.h"
 
 #define serial_connected_width 15
 #define serial_connected_height 15

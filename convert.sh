@@ -25,9 +25,21 @@ for f in *.xbm; do
 done
 echo "ok"
 
-echo -n " * Patching ......................... "
+
+echo -n " * Creating bitmaps.h ............... "
+touch ./bitmaps.h
+echo "#include <avr/pgmspace.h>" > ./bitmaps.h
+echo "" >> ./bitmaps.h
+
+for f in *.cpp; do 
+    echo "extern const unsigned char ${f%.*} [] PROGMEM;" >> ./bitmaps.h
+done
+echo "ok"
+
+
+echo -n " * Patching bitmaps ................. "
 for f in *.cpp; do
-    prepend="#include <avr/pgmspace.h>\n\n"
+    prepend="#include \"bitmaps.h\"\n\n"
     sed -i "1s;^;$prepend;" $f
 
     replace="\nconst unsigned char ${f%.*} [] PROGMEM = {"

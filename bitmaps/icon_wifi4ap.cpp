@@ -1,4 +1,4 @@
-#include <avr/pgmspace.h>
+#include "bitmaps.h"
 
 #define wifi4ap_width 15
 #define wifi4ap_height 15

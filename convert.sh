@@ -13,7 +13,7 @@ cd svg
 echo "ok"
 
 echo -n " * Converting to bitmaps ............ "
-mogrify -path ../src -format xbm  *.svg
+/usr/local/bin/mogrify -path ../src -format xbm  *.svg
 echo "ok"
 
 echo -n " * Changing directory to bitmaps .... "

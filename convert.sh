@@ -34,16 +34,25 @@ echo "" >> ./bitmaps.h
 
 for f in *.cpp; do 
     echo "extern const unsigned char ${f%.*} [] PROGMEM;" >> ./bitmaps.h
+    # copying and modifying defines
+    word="icon_"
+    match="#define "
+    sed -ne "s/$match/& $word/ p" $f >> ./bitmaps.h
 done
 echo "ok"
 
 
 echo -n " * Patching bitmaps ................. "
 for f in *.cpp; do
-    prepend="#include \"bitmaps.h\"\n\n"
+    # removing unwanted defines: they are already in header file
+    sed -i '/#define/d' $f
+
+    # prepending file with #include "bitmaps.h"
+    prepend="#include \"bitmaps.h\"\n"
     sed -i "1s;^;$prepend;" $f
 
+    #changing variable declaration
     replace="\nconst unsigned char ${f%.*} [] PROGMEM = {"
-    sed -i "5s/.*/$replace/" $f
+    sed -i "2s/.*/$replace/" $f
 done
 echo "ok"

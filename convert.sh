@@ -33,7 +33,7 @@ echo "#include <avr/pgmspace.h>" > ./bitmaps.h
 echo "" >> ./bitmaps.h
 
 for f in *.cpp; do 
-    echo "extern const unsigned char ${f%.*} [] PROGMEM;" >> ./bitmaps.h
+    echo "extern const unsigned char ${f%.*} [] ;" >> ./bitmaps.h
     # copying and modifying defines
     word="icon_"
     match="#define "
@@ -52,7 +52,7 @@ for f in *.cpp; do
     sed -i "1s;^;$prepend;" $f
 
     #changing variable declaration
-    replace="\nconst unsigned char ${f%.*} [] PROGMEM = {"
+    replace="\nconst unsigned char ${f%.*} []  = {"
     sed -i "2s/.*/$replace/" $f
 done
 echo "ok"

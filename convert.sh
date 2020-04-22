@@ -29,8 +29,8 @@ echo "ok"
 
 echo -n " * Creating bitmaps.h ............... "
 touch ./bitmaps.h
-echo "#include <avr/pgmspace.h>" > ./bitmaps.h
-echo "" >> ./bitmaps.h
+# echo "#include <avr/pgmspace.h>" > ./bitmaps.h
+# echo "" >> ./bitmaps.h
 
 for f in *.cpp; do 
     echo "extern const unsigned char ${f%.*} [] ;" >> ./bitmaps.h
